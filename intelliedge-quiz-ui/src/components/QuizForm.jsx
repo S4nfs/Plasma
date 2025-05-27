@@ -45,7 +45,9 @@ const QuizForm = ({ onStart }) => {
 
   return (
     <form onSubmit={handleSubmit} className='quiz-form' style={styles.form}>
-      <label style={styles.label}>Exam</label>
+      <label style={styles.label} className='text-zinc-500'>
+        Exam
+      </label>
       <select name='exam' value={form.exam} onChange={handleChange} style={styles.input}>
         {Object.keys(examData).map((exam) => (
           <option key={exam} value={exam}>
@@ -54,7 +56,9 @@ const QuizForm = ({ onStart }) => {
         ))}
       </select>
 
-      <label style={styles.label}>Subject</label>
+      <label style={styles.label} className='text-zinc-500'>
+        Subject
+      </label>
       <select name='subject' value={form.subject} onChange={handleChange} style={styles.input}>
         <option value=''>Select Subject</option>
         {subjects.map((sub) => (
@@ -64,7 +68,9 @@ const QuizForm = ({ onStart }) => {
         ))}
       </select>
 
-      <label style={styles.label}>Topic</label>
+      <label style={styles.label} className='text-zinc-500'>
+        Topic
+      </label>
       <select name='topic' value={form.topic} onChange={handleChange} style={styles.input}>
         <option value=''>Select Topic</option>
         {topics.map((top) => (
@@ -74,17 +80,25 @@ const QuizForm = ({ onStart }) => {
         ))}
       </select>
 
-      <label style={styles.label}>Difficulty</label>
+      <label style={styles.label} className='text-zinc-500'>
+        Difficulty
+      </label>
       <select name='difficulty' value={form.difficulty} onChange={handleChange} style={styles.input}>
         <option value='easy'>Easy</option>
         <option value='medium'>Medium</option>
         <option value='hard'>Hard</option>
       </select>
 
-      <label style={styles.label}>Number of Questions</label>
+      <label style={styles.label} className='text-zinc-500'>
+        Number of Questions
+      </label>
       <input type='number' name='num_questions' min='1' max='20' value={form.num_questions} onChange={handleChange} style={styles.input} />
 
-      <button type='submit' style={styles.button}>
+      <button
+        type='submit'
+        style={styles.button}
+        className='bg-[linear-gradient(90deg,_rgba(2,0,36,1)_0%,_rgba(9,9,121,1)_0%,_rgba(0,212,255,1)_100%)] px-4 rounded shadow-md hover:opacity-90 transition duration-300'
+      >
         Generate Quiz
       </button>
     </form>
@@ -100,7 +114,7 @@ const styles = {
     margin: '0 auto',
     padding: '2rem',
     borderRadius: '12px',
-    background: '#1f1f1f',
+    background: '#e2e8f0',
     color: '#e0e0e0',
   },
   label: {

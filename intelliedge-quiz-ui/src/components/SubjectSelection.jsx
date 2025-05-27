@@ -113,7 +113,7 @@ const SubjectSelection = ({ selectedPlan, onSelectionDone }) => {
           <button
             onClick={handleReset}
             style={{ ...styles.actionBtn }}
-            className='text-slate-5 00 bg-[linear-gradient(135deg,_#f5f7fa_0%,_#c3cfe2_100%)] font-semibold py-2 px-4 rounded shadow-md hover:opacity-90 transition duration-300'
+            className='bg-[linear-gradient(135deg,_#f5f7fa_0%,_#c3cfe2_100%)] font-semibold py-2 px-4 rounded shadow-md hover:opacity-90 transition duration-300 text-slate-700'
           >
             🔄 Reset Selection
           </button>
@@ -177,7 +177,6 @@ const styles = {
     borderRadius: '8px',
     border: 'none',
     fontWeight: 'bold',
-    color: '#fff',
     fontSize: '1rem',
     transition: 'background 0.3s ease',
     cursor: 'pointer',

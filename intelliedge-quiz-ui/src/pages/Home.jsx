@@ -1,7 +1,9 @@
-// src/pages/Home.jsx
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
+import { GiDna2 } from 'react-icons/gi'
+import Footer from '../components/Footer'
+
 //Orginal 500 (discounted 299) , 750(discounted 499) , 1500(discounted 799).
 const plans = [
   {
@@ -42,14 +44,20 @@ const Home = () => {
   return (
     <div style={styles.container}>
       <Header showSignIn={true} />
-
+      {/* Hero Section  */}
       <section style={styles.hero}>
         <h1 style={styles.heroTitle}>
-          Unlock your potential with <span style={styles.brand}>Plasma AI</span>
+          <div style={styles.titleWrapper}>
+            <span style={styles.brand}>AI</span>-Powered Gateway to Medical Mastery
+            <GiDna2 style={styles.dnaIcon} />
+          </div>
         </h1>
-        <p style={styles.heroSubtitle}>Your personalized AI learning assistant for NEET PG excellence.</p>
+        <p style={styles.heroSubtitle} className='italic'>
+          "Feel the <a className='underline decoration-red-500'>Beat</a> of <a className='underline decoration-green-500'>Success</a>"
+        </p>
       </section>
 
+      {/* Plans Section  */}
       <section style={styles.plansSection}>
         <h2 className='text-slate-500' style={styles.sectionTitle}>
           Choose your plan
@@ -66,7 +74,7 @@ const Home = () => {
               }}
             >
               <h3>{plan.title}</h3>
-              <p style={styles.price}>
+              <p style={styles.price} className='text-green-500'>
                 <span style={styles.originalPrice}>{plan.originalPrice}</span>
                 {plan.price}
                 <span style={styles.perMonth}> /month</span>
@@ -79,7 +87,7 @@ const Home = () => {
                 ))}
               </ul>
               <button
-                className='bg-[linear-gradient(90deg,_rgba(2,0,36,1)_0%,_rgba(9,9,121,1)_0%,_rgba(0,212,255,1)_100%)] px-4 rounded shadow-md hover:opacity-90 transition duration-300'
+                className='bg-[linear-gradient(90deg,_rgba(2,0,36,1)_0%,_rgba(9,9,121,1)_0%,_rgba(0,212,255,1)_100%)] px-4 rounded hover:opacity-90 transition duration-300 font-medium shadow-lg hover:shadow-xl'
                 style={styles.subscribeBtn}
                 onClick={() => handlePlanSelect(plan)}
               >
@@ -89,6 +97,30 @@ const Home = () => {
           ))}
         </div>
       </section>
+      {/* Stats Section */}
+      <section className='container mx-auto px-4 py-16'>
+        <div className='bg-gradient-to-br from-cyan-900 via-blue-800 to-sky-800 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden'>
+          <div className='absolute bottom-0 right-0 w-64 h-64 bg-sky-400/20 rounded-full blur-3xl -mr-32 -mb-32'></div>
+          <div className='relative z-10'>
+            <h2 className='text-3xl font-bold mb-8 text-center'>Advancing Medical Science</h2>
+            <div className='grid md:grid-cols-3 gap-8 text-center'>
+              <div>
+                <div className='text-4xl font-bold mb-2 text-sky-300'>99.49%</div>
+                <p className='text-sky-100'>Accuracy Rate</p>
+              </div>
+              <div>
+                <div className='text-4xl font-bold mb-2 text-sky-300'>1M+</div>
+                <p className='text-sky-100'>Quizes Completed</p>
+              </div>
+              <div>
+                <div className='text-4xl font-bold mb-2 text-sky-300'>24/7</div>
+                <p className='text-sky-100'>Available Support</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <Footer />
     </div>
   )
 }
@@ -176,6 +208,17 @@ const styles = {
     color: '#fff',
     cursor: 'pointer',
     transition: 'all 0.3s ease',
+  },
+  titleWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '0.5rem',
+  },
+  dnaIcon: {
+    width: '2rem',
+    height: '2rem',
+    color: '#818cf8',
   },
 }
 

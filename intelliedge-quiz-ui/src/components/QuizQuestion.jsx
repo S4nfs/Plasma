@@ -7,12 +7,14 @@ const QuizQuestion = ({ q, index, total, selected, setSelected, onSubmit, submit
 
   return (
     <div className='quiz-question' style={styles.container}>
-      <h2 style={styles.heading}>
+      <h2 style={styles.heading} className='text-slate-700 font-semibold'>
         Question {index + 1} of {total}
       </h2>
-      <p style={styles.questionText}>{q.question}</p>
+      <p style={styles.questionText} className='text-slate-700'>
+        {q.question}
+      </p>
 
-      <div style={styles.optionsContainer}>
+      <div style={styles.optionsContainer} className='text-slate-700'>
         {q.options.map((opt, i) => {
           const isSelected = selected === i
           const isTheCorrectOne = i === correctOptionIndex
@@ -29,7 +31,7 @@ const QuizQuestion = ({ q, index, total, selected, setSelected, onSubmit, submit
           return (
             <label key={i} style={optionStyle}>
               <input type='radio' name={`question-${index}`} value={i} checked={isSelected} onChange={() => setSelected(i)} disabled={submitted} />
-              <span style={{ marginLeft: '0.5rem' }}>
+              <span style={{ marginLeft: '0.5rem' }} className='text-slate-600'>
                 {String.fromCharCode(65 + i)}) {opt}
               </span>
             </label>
@@ -38,7 +40,11 @@ const QuizQuestion = ({ q, index, total, selected, setSelected, onSubmit, submit
       </div>
 
       {!submitted && (
-        <button onClick={onSubmit} style={styles.submitButton}>
+        <button
+          onClick={onSubmit}
+          style={styles.submitButton}
+          className='bg-[linear-gradient(90deg,_rgba(2,0,36,1)_0%,_rgba(9,9,121,1)_0%,_rgba(0,212,255,1)_100%)]  rounded shadow-md hover:opacity-90 transition duration-300'
+        >
           Submit
         </button>
       )}
@@ -65,14 +71,9 @@ const styles = {
   container: {
     padding: '1rem 0',
   },
-  heading: {
-    marginBottom: '0.5rem',
-    color: '#ffffff',
-  },
   questionText: {
     marginBottom: '1rem',
-    fontSize: '1.1rem',
-    color: '#e0e0e0',
+    fontSize: '1.5rem',
   },
   optionsContainer: {
     display: 'flex',
@@ -92,9 +93,9 @@ const styles = {
     borderRadius: '4px',
   },
   incorrectOption: {
-    backgroundColor: '#3d1e1e',
     padding: '0.4rem',
     borderRadius: '4px',
+    border: '2px solid #e11d48',
   },
   submitButton: {
     marginTop: '1rem',
@@ -115,18 +116,18 @@ const styles = {
     color: '#d0ffd0',
   },
   incorrectBox: {
-    backgroundColor: '#4d0000',
+    backgroundColor: '#ef4444',
     padding: '0.75rem',
     marginTop: '1rem',
     borderRadius: '6px',
     color: '#ffd0d0',
   },
   explanationBox: {
-    backgroundColor: '#2a2a2a',
+    border: '2px solid #86efac',
     padding: '1rem',
     marginTop: '1rem',
     borderRadius: '6px',
-    color: '#e0e0e0',
+    color: '#444',
   },
   explanationHeader: {
     fontWeight: 'bold',

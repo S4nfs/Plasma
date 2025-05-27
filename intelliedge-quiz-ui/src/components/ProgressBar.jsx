@@ -14,14 +14,14 @@ const styles = {
   container: {
     height: '12px',
     width: '100%',
-    backgroundColor: '#e0e0e0',
+    backgroundColor: '#64748b',
     borderRadius: '10px',
     marginBottom: '20px',
     overflow: 'hidden',
   },
   filled: {
     height: '100%',
-    backgroundColor: '#d97706', // magenta (from UI)
+    backgroundColor: '#22c55e',
     transition: 'width 0.4s ease-in-out',
   },
 }
