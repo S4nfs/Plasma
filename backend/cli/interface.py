@@ -1,7 +1,7 @@
 from quiz.generator import generate_adaptive_quiz
 
 def cli_demo_menu():
-    print("\n==== IntelliEdge RAG CLI ====")
+    print("\n==== Plasma AI RAG CLI ====")
     print("1. Generate Adaptive Quiz")
     print("9. Exit")
     print("=============================")
