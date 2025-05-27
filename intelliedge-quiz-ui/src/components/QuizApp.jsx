@@ -1,26 +1,34 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import QuizHeader from './QuizHeader'
 import QuizQuestion from './QuizQuestion'
 import QuizSidebar from './QuizSidebar'
 import ProgressBar from './ProgressBar'
 import Footer from './Footer'
 import QuizForm from './QuizForm'
 import UserLogin from './UserLogin' // 🆕 NEW
+import Header from './Header'
 
 const QuizApp = () => {
-  const [user, setUser] = useState(null) // 🧑 User login
+  const [user, setUser] = useState(null)
   const [quiz, setQuiz] = useState([])
   const [index, setIndex] = useState(0)
   const [selected, setSelected] = useState(null)
   const [feedback, setFeedback] = useState('')
   const [correct, setCorrect] = useState(0)
   const [timeLeft, setTimeLeft] = useState(0)
+  const [showTimeUpModal, setShowTimeUpModal] = useState(false)
 
   useEffect(() => {
     if (!quiz.length) return
     const timer = setInterval(() => {
-      setTimeLeft((t) => Math.max(t - 1, 0))
+      setTimeLeft((t) => {
+        if (t <= 1) {
+          setShowTimeUpModal(true)
+          clearInterval(timer)
+          return 0
+        }
+        return Math.max(t - 1, 0)
+      })
     }, 1000)
     return () => clearInterval(timer)
   }, [quiz])
@@ -79,18 +87,38 @@ const QuizApp = () => {
     unanswered: quiz.length - index,
   }
 
+  const TimeUpModal = () => (
+    <div style={styles.modalOverlay}>
+      <div style={styles.modal}>
+        <h2 style={styles.modalTitle}>⏰ Time's Up!</h2>
+        <p>Your quiz session has ended.</p>
+        <button
+          onClick={restart}
+          style={styles.restartButton}
+          className='bg-[linear-gradient(90deg,_rgba(2,0,36,1)_0%,_rgba(9,9,121,1)_0%,_rgba(0,212,255,1)_100%)] px-4 rounded shadow-md hover:opacity-90 transition duration-300'
+        >
+          Start New Quiz
+        </button>
+      </div>
+    </div>
+  )
+
   return (
     <div className='app dark-theme' style={styles.app}>
-      <QuizHeader />
+      <Header />
 
       {!user ? (
         <div style={styles.centeredPanel}>
-          <h2 style={styles.title}>👤 Identify Yourself</h2>
+          <h2 style={styles.title} className='text-slate-700'>
+            👤 Identify Yourself
+          </h2>
           <UserLogin onNext={setUser} />
         </div>
       ) : !quiz.length ? (
         <div style={styles.centeredPanel}>
-          <h2 style={styles.title}>🧠 Start Your Quiz</h2>
+          <h2 style={styles.title} className='text-slate-400 font-semibold'>
+            🧠 Start Your Quiz
+          </h2>
           <QuizForm onStart={handleStartQuiz} />
         </div>
       ) : (
@@ -104,7 +132,11 @@ const QuizApp = () => {
 
             <div style={styles.navButtons}>
               {feedback && index < quiz.length - 1 && (
-                <button onClick={next} style={styles.nextButton}>
+                <button
+                  onClick={next}
+                  style={styles.nextButton}
+                  className='bg-[linear-gradient(90deg,_rgba(2,0,36,1)_0%,_rgba(9,9,121,1)_0%,_rgba(0,212,255,1)_100%)] px-4 rounded shadow-md hover:opacity-90 transition duration-300'
+                >
                   Next
                 </button>
               )}
@@ -123,9 +155,11 @@ const QuizApp = () => {
             </div>
           </div>
 
-          <QuizSidebar progress={index} total={quiz.length} time={formatTime(timeLeft)} stats={performance} />
+          <QuizSidebar progress={index} total={quiz.length} time={formatTime(timeLeft)} stats={performance} timeColor={timeLeft <= 10 ? '#ff4444' : '#00cc88'} />
         </div>
       )}
+
+      {showTimeUpModal && <TimeUpModal />}
 
       <Footer />
     </div>
@@ -135,7 +169,7 @@ const QuizApp = () => {
 const styles = {
   app: {
     fontFamily: 'sans-serif',
-    backgroundColor: '#121212',
+    backgroundColor: '#e2e8f0',
     color: '#e0e0e0',
     minHeight: '100vh',
     width: '100%',
@@ -165,7 +199,7 @@ const styles = {
   },
   mainPanel: {
     flex: '1 1 auto',
-    backgroundColor: '#1e1e1e',
+    backgroundColor: '#e2e8f6',
     padding: '1.5rem',
     borderRadius: '10px',
     maxWidth: '100%',
@@ -209,6 +243,31 @@ const styles = {
   endMessage: {
     textAlign: 'center',
     width: '100%',
+  },
+  modalOverlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1000,
+  },
+  modal: {
+    backgroundColor: '#fff',
+    padding: '2rem',
+    borderRadius: '10px',
+    textAlign: 'center',
+    maxWidth: '400px',
+    width: '90%',
+  },
+  modalTitle: {
+    fontSize: '1.5rem',
+    marginBottom: '1rem',
+    color: '#333',
   },
 }
 
