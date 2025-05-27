@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
 const ProgressBar = ({ current, total }) => {
-  const percentage = Math.min((current / total) * 100, 100);
+  const percentage = Math.min((current / total) * 100, 100)
 
   return (
-    <div className="progress-bar-container" style={styles.container}>
+    <div className='progress-bar-container' style={styles.container}>
       <div style={{ ...styles.filled, width: `${percentage}%` }} />
     </div>
-  );
-};
+  )
+}
 
 const styles = {
   container: {
@@ -21,9 +21,9 @@ const styles = {
   },
   filled: {
     height: '100%',
-    backgroundColor: '#ff00ff', // magenta (from UI)
+    backgroundColor: '#d97706', // magenta (from UI)
     transition: 'width 0.4s ease-in-out',
-  }
-};
+  },
+}
 
-export default ProgressBar;
+export default ProgressBar

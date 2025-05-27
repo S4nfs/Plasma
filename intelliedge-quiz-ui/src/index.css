@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   background: #1a1a1a;
   color: #f2f2f2;
@@ -35,11 +39,33 @@ body {
 }
 
 .btn-submit, .btn-next {
-  background: magenta;
+  background: skyblue;
   border: none;
   color: white;
   padding: 0.5rem 1rem;
   cursor: pointer;
   margin-top: 1rem;
   border-radius: 5px;
+}
+
+
+@media (max-width: 768px) {
+  .brand-heading {
+    font-size: 2rem;
+  }
+  
+  .form-heading {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-wrapper {
+    padding: 0.5rem;
+  }
 }

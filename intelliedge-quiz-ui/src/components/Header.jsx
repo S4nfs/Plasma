@@ -1,19 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
     <header style={styles.header}>
       <div style={styles.titleContainer}>
-        <span style={styles.title}>BYOL Academy</span>
+        <Link to='/' className='text-sky-400'>
+          Plasma AI
+        </Link>
       </div>
       <nav style={styles.nav}>
-        <Link to="/" style={styles.link}>Home</Link>
-        <Link to="/contact" style={styles.link}>Contact</Link> {/* Placeholder route */}
+        <Link to='/' style={styles.link}>
+          Home
+        </Link>
+        <Link to='/contact' style={styles.link}>
+          Contact
+        </Link>{' '}
+        {/* Placeholder route */}
       </nav>
     </header>
-  );
-};
+  )
+}
 
 const styles = {
   header: {
@@ -26,21 +33,21 @@ const styles = {
     color: '#fff',
     position: 'sticky',
     top: 0,
-    zIndex: 1000
+    zIndex: 1000,
   },
   titleContainer: {
     display: 'flex',
     alignItems: 'center',
-    gap: '0.5rem'
+    gap: '0.5rem',
   },
   title: {
     fontSize: '1.4rem',
     fontWeight: 'bold',
-    color: '#7B61FF'
+    color: '#0ea5e9',
   },
   nav: {
     display: 'flex',
-    gap: '1rem'
+    gap: '1rem',
   },
   link: {
     color: '#ffffff',
@@ -48,8 +55,8 @@ const styles = {
     fontWeight: '500',
     fontSize: '1rem',
     transition: 'color 0.3s ease',
-    cursor: 'pointer'
-  }
-};
+    cursor: 'pointer',
+  },
+}
 
-export default Header;
+export default Header

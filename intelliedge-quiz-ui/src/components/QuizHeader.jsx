@@ -1,6 +1,6 @@
 const QuizHeader = () => (
   <header className="header">
-    <div>🧠 IntelliEdge</div>
+    <div>🧠 Plasma AI</div>
     <nav>
       {/*<a href="#">Home</a>
       <a href="#">Concept Mastery</a>*/}
