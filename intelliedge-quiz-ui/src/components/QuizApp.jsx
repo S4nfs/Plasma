@@ -7,6 +7,7 @@ import Footer from './Footer'
 import QuizForm from './QuizForm'
 import UserLogin from './UserLogin' // 🆕 NEW
 import Header from './Header'
+import { serverUrl } from '../constants/utils'
 
 const QuizApp = () => {
   const [user, setUser] = useState(null)
@@ -45,7 +46,7 @@ const QuizApp = () => {
         ...form,
         user_id: user.userId,
       }
-      const res = await axios.post('http://localhost:8000/generate-quiz', payload)
+      const res = await axios.post(`${serverUrl}/generate-quiz`, payload)
       setQuiz(res.data)
       setIndex(0)
       setCorrect(0)

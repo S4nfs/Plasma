@@ -37,7 +37,7 @@ const UserProfileForm = ({ onSubmit }) => {
     console.log('✅ User JSON:', userProfileJson)
 
     // Optional backend post:
-    // await fetch('http://localhost:8000/save-profile', {
+    // await fetch(`${serverUrl}/save-profile', {
     //   method: 'POST',
     //   headers: { 'Content-Type': 'application/json' },
     //   body: JSON.stringify(userProfileJson)

@@ -53,7 +53,7 @@ const Home = () => {
           </div>
         </h1>
         <p style={styles.heroSubtitle} className='italic'>
-          "Feel the <a className='underline decoration-red-500'>Beat</a> of <a className='underline decoration-green-500'>Success</a>"
+          "Feel the <a className='text-rose-600'>Beat</a> of <a className='text-green-500'>Success</a>"
         </p>
       </section>
 
