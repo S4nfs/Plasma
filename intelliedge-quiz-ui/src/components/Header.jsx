@@ -1,17 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { PiFlaskDuotone as Flask } from 'react-icons/pi'
+import PlasmaLogo from '../images/PLASMA-demo.svg'
 
 const Header = () => {
   return (
-    <header className='relative bg-gradient-to-br from-slate-100 via-sla-200 to-blue-200 text-white py-4 px-6 shadow-lg top-0 z-50 overflow-hidden'>
+    <header className='relative bg-gradient-to-br from-slate-100 via-sla-200 to-blue-200 text-white py-2 px-6 shadow-lg top-0 z-50 overflow-hidden'>
       {/* Sky blue accent in bottom corner */}
       <div className='absolute bottom-0 right-0 w-40 h-40 bg-sky-400/20 rounded-full blur-2xl -mr-20 -mb-20'></div>
 
       <div className='relative flex justify-between items-center'>
         <div className='flex items-center gap-2'>
-          <Link to='/' className='text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-sky-600 hover:from-sky-500 hover:to-white transition-colors'>
-            Plasma AI
+          <Link to='/'>
+            <img src={PlasmaLogo} alt='PLASMA AI Logo' className='h-16 w-auto object-contain' />
           </Link>
           <div className='flex items-center bg-indigo-500/20 px-2 py-0.5 rounded-full border border-indigo-600/30'>
             <span className='text-xs font-medium text-sky-100 shadow-xl'>Beta</span>
