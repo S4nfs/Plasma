@@ -106,8 +106,7 @@ def initialize_session(session: FullSession):
 
 if __name__ == "__main__":
     import sys
-    if len(sys.argv) > 1 and sys.argv[1] == "cli":
-        cli_main()
-    else:
-        import uvicorn
-        uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    # if len(sys.argv) > 1 and sys.argv[1] == "cli":
+    #     cli_main()
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

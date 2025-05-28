@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   background: #1a1a1a;
   color: #f2f2f2;
@@ -20,10 +24,11 @@ body {
 }
 
 .sidebar {
-  width: 25%;
+  width: 15%;
   padding: 1rem;
-  background: #1f1f1f;
+  background: transparent;
   border-radius: 10px;
+  border: 2px solid #444;
 }
 
 .header {
@@ -35,11 +40,53 @@ body {
 }
 
 .btn-submit, .btn-next {
-  background: magenta;
+  background: skyblue;
   border: none;
   color: white;
   padding: 0.5rem 1rem;
   cursor: pointer;
   margin-top: 1rem;
   border-radius: 5px;
+}
+
+
+@media (max-width: 768px) {
+  .brand-heading {
+    font-size: 2rem;
+  }
+  
+  .form-heading {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-wrapper {
+    padding: 0.5rem;
+  }
+}
+
+/* Scolling CSS */
+@layer components {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  
+  .scrollbar-thumb-gray-400::-webkit-scrollbar-thumb {
+    background-color: #9CA3AF;
+    border-radius: 6px;
+  }
+  
+  .scrollbar-track-gray-100::-webkit-scrollbar-track {
+    background-color: #F3F4F6;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
 }
