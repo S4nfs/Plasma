@@ -117,9 +117,9 @@ const QuizApp = () => {
         </div>
       ) : !quiz.length ? (
         <div style={styles.centeredPanel}>
-          <h2 style={styles.title} className='text-slate-400 font-semibold'>
-            🧠 Start Your Quiz
-          </h2>
+          <h1 style={styles.title} className='text-slate-600 font-semibold'>
+            🧠 Generate Your Quiz
+          </h1>
           <QuizForm onStart={handleStartQuiz} />
         </div>
       ) : (
@@ -136,7 +136,7 @@ const QuizApp = () => {
                 <button
                   onClick={next}
                   style={styles.nextButton}
-                  className='bg-[linear-gradient(90deg,_rgba(2,0,36,1)_0%,_rgba(9,9,121,1)_0%,_rgba(0,212,255,1)_100%)] px-4 rounded shadow-md hover:opacity-90 transition duration-300'
+                  className='bg-[linear-gradient(90deg,_rgba(2,0,36,1)_0%,_rgba(9,9,121,1)_0%,_rgba(0,212,255,1)_100%)] px-4 py-5 rounded shadow-md hover:opacity-90 transition duration-300'
                 >
                   Next
                 </button>

@@ -21,6 +21,7 @@ const QuizForm = ({ onStart }) => {
     difficulty: 'medium',
     num_questions: 5,
   })
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -31,13 +32,22 @@ const QuizForm = ({ onStart }) => {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!form.subject || !form.topic) {
       alert('Please select a subject and topic.')
       return
     }
-    onStart(form)
+
+    setIsLoading(true)
+    try {
+      await onStart(form)
+    } catch (error) {
+      console.error('Error generating quiz:', error)
+      alert('Failed to generate quiz. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const subjects = Object.keys(examData[form.exam] || {})
@@ -97,9 +107,17 @@ const QuizForm = ({ onStart }) => {
       <button
         type='submit'
         style={styles.button}
-        className='bg-[linear-gradient(90deg,_rgba(2,0,36,1)_0%,_rgba(9,9,121,1)_0%,_rgba(0,212,255,1)_100%)] px-4 rounded shadow-md hover:opacity-90 transition duration-300'
+        disabled={isLoading}
+        className='bg-[linear-gradient(90deg,_rgba(2,0,36,1)_0%,_rgba(9,9,121,1)_0%,_rgba(0,212,255,1)_100%)] px-4 rounded shadow-md hover:opacity-90 transition duration-300 disabled:opacity-50'
       >
-        Generate Quiz
+        {isLoading ? (
+          <div className='flex items-center justify-center'>
+            <div className='w-5 h-5 border-t-2 border-b-2 border-white rounded-full animate-spin mr-2'></div>
+            Generating...
+          </div>
+        ) : (
+          'Generate Quiz'
+        )}
       </button>
     </form>
   )
