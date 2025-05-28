@@ -79,6 +79,7 @@ const QuizApp = () => {
     setFeedback('')
     setCorrect(0)
     setTimeLeft(300)
+    setShowTimeUpModal(false)
   }
 
   const performance = {
@@ -92,7 +93,7 @@ const QuizApp = () => {
     <div style={styles.modalOverlay}>
       <div style={styles.modal}>
         <h2 style={styles.modalTitle}>⏰ Time's Up!</h2>
-        <p>Your quiz session has ended.</p>
+        <p className='text-slate-500 py-4'>Your quiz session has ended.</p>
         <button
           onClick={restart}
           style={styles.restartButton}
@@ -267,7 +268,7 @@ const styles = {
   },
   modalTitle: {
     fontSize: '1.5rem',
-    marginBottom: '1rem',
+    marginBottom: '0.5rem',
     color: '#333',
   },
 }
